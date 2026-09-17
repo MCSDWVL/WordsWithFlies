@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#13251f" />
+    <title>Words with Flies</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header>
+        <p class="eyebrow">A small word game against a very busy insect brain</p>
+        <h1>Words with <span>Flies</span></h1>
+        <p class="subtitle">Build words. The fly thinks in flashes, then makes its move.</p>
+      </header>
+      <section class="game-layout" aria-label="Words with Flies game">
+        <section class="game-card">
+          <div class="scorebar">
+            <div><small>You</small><strong id="human-score">0</strong></div>
+            <div class="turn-status" id="status" aria-live="polite">Loading the lexicon…</div>
+            <div><small>Fly</small><strong id="fly-score">0</strong></div>
+          </div>
+          <div id="board" class="board" role="grid" aria-label="Word board"></div>
+          <div class="rack-row">
+            <div id="human-rack" class="rack" aria-label="Your tiles"></div>
+            <button id="submit-move" class="primary" disabled>Play word</button>
+            <button id="clear-move" class="secondary" disabled>Clear</button>
+            <button id="swap-mode" class="secondary" disabled>Swap tiles</button>
+            <button id="swap-tiles" class="secondary" hidden disabled>Swap selected</button>
+          </div>
+          <p id="hint" class="hint">Choose a tile, then a board square. Your first word must cross the center star.</p>
+        </section>
+        <aside class="brain-card">
+          <div class="brain-heading"><div><p class="eyebrow">Live inference</p><h2>Fly brain</h2></div><span id="brain-state" class="pill">RESTING</span></div>
+          <div class="fly-stage" aria-label="Animated fruit fly">
+            <div id="fly" class="fly resting"><i class="wing left"></i><i class="wing right"></i><i class="body"></i><i class="head"></i><i class="eye one"></i><i class="eye two"></i><i class="leg l1"></i><i class="leg l2"></i><i class="leg r1"></i><i class="leg r2"></i></div>
+            <div class="floor"></div>
+          </div>
+          <div id="neurons" class="neurons" aria-label="Schematic neural activity"></div>
+          <dl class="brain-readout"><div><dt>Sensory</dt><dd id="sensory">board + rack</dd></div><div><dt>Candidate plays</dt><dd id="candidates">—</dd></div><div><dt>Selected</dt><dd id="selected">—</dd></div></dl>
+          <p class="disclaimer">When the trained ONNX model is loaded, each point is one of its 2,952 FlyWire-derived recurrent nodes. The 2D brain shape is schematic, not anatomical neuron coordinates; a real fly does not know words.</p>
+        </aside>
+      </section>
+      <footer><button id="new-game" class="secondary">New game</button><span>Words are checked against your bundled lexicon, entirely in this browser.</span></footer>
+    </main>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>

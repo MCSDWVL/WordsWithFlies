@@ -1,0 +1,13 @@
+{
+  "revision": "91bdd1e7dcf193f3e7ca5a8933497fcef63b7960",
+  "source": "https://raw.githubusercontent.com/philshiu/Drosophila_brain_model/91bdd1e7dcf193f3e7ca5a8933497fcef63b7960/",
+  "source_sha256": {
+    "Connectivity_783.parquet": "efeb23fb99098e9c390f6869969b2a121a2ee92c833cfc45ecb2c1d8e1af0347",
+    "LICENSE": "3621f6d6476189190e2960fa43f11b275ba4eca848fdac50a1ba2925de6223e8"
+  },
+  "source_neurons": 138639,
+  "neurons": 2952,
+  "edges": 110000,
+  "topology_sha256": "ef9223f3803409797d74b9fa634d2f9f9947a1a41fe7a559357dc5e2d85e5fd0",
+  "license": "MIT (copied from upstream source cache)"
+}

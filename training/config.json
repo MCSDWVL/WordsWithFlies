@@ -1,0 +1,6 @@
+{
+  "seed": 7331,
+  "topology": { "neurons": 2952, "max_edges": 110000, "sensory_nodes": 256, "motor_nodes": 256 },
+  "model": { "state_features": 96, "candidate_features": 48, "hidden": 128, "steps": 4 },
+  "training": { "batch_size": 64, "imitation_steps": 100000, "selfplay_steps": 20000, "learning_rate": 0.0003, "validate_every": 2500, "checkpoint_every": 10000 }
+}

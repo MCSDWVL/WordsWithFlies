@@ -1,0 +1,8 @@
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.9.1+cu128
+numpy>=2.0
+pandas>=2.2
+pyarrow>=17.0
+onnx>=1.17
+onnxscript>=0.3
+onnxruntime-gpu>=1.20

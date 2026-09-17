@@ -1,0 +1,19 @@
+{
+  "name": "words-with-flies-policy",
+  "status": "design-contract-not-a-checkpoint",
+  "inputs": {
+    "game_state": "Board/rack/bag/score/turn features encoded by the offline trainer and browser identically.",
+    "candidates": "At most 256 legal candidate-play feature rows in deterministic order.",
+    "recurrent_state": "Previous recurrent state, reset at the beginning of each game."
+  },
+  "outputs": {
+    "policy_logits": "One logit for each candidate row.",
+    "value": "Expected game outcome from the fly perspective.",
+    "next_recurrent_state": "State carried into the fly's following turn."
+  },
+  "invariants": [
+    "The browser rules engine masks unavailable candidates before selection.",
+    "The lexicon SHA-256 and topology SHA-256 are recorded with every trained release.",
+    "Only the recorded topology and lexicon inputs are accepted by a trained release."
+  ]
+}

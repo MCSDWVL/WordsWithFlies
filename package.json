@@ -1,0 +1,11 @@
+{
+  "name": "words-with-flies",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "build:lexicon": "node scripts/build-lexicon.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "serve": "npx serve ."
+  }
+}

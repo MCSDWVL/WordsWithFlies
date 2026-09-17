@@ -1,0 +1,8 @@
+{
+  "checkpoint": "training\\artifacts\\checkpoints\\best-dense.pt",
+  "topology_sha256": "ef9223f3803409797d74b9fa634d2f9f9947a1a41fe7a559357dc5e2d85e5fd0",
+  "lexicon_sha256": "576f29fa16c7ee47621300c877b5ce338beeb5d34fff1d289ed37310522bfee8",
+  "state_features": 96,
+  "candidate_features": 48,
+  "recurrent_nodes": 2952
+}
