@@ -1,8 +1,7 @@
-import { CENTER, SIZE, applyMove, draw, emptyBoard, key, makeBag, tileValue, validateMove } from "./rules.js";
+import { CENTER, SIZE, applyMove, draw, emptyBoard, key, makeBag, premiumAt, tileValue, validateMove } from "./rules.js";
 const $ = (s) => document.querySelector(s);
 const boardEl = $("#board"), rackEl = $("#human-rack"), statusEl = $("#status"), hintEl = $("#hint"), humanScoreEl = $("#human-score"), flyScoreEl = $("#fly-score"), neuronsEl = $("#neurons"), brainState = $("#brain-state"), sensory = $("#sensory"), candidatesEl = $("#candidates"), selectedEl = $("#selected"), submit = $("#submit-move"), clear = $("#clear-move"), swapModeButton = $("#swap-mode"), swapTilesButton = $("#swap-tiles"), fly = $("#fly");
 let state, selectedRack = null, staged = [], dictionary = null, worker, exchangeMode = false, exchangeIndices = new Set();
-const premium = new Map([["0:0","TW"],["0:7","TW"],["0:14","TW"],["7:0","TW"],["7:14","TW"],["14:0","TW"],["14:7","TW"],["14:14","TW"],["1:1","DW"],["2:2","DW"],["3:3","DW"],["4:4","DW"],["10:10","DW"],["11:11","DW"],["12:12","DW"],["13:13","DW"]]);
 // A dense bilateral display layout for every node in the compact model.
 // FlyWire's connection table has no neuron positions, so coordinates are
 // schematic; each point's brightness is its corresponding recurrent value.
@@ -17,8 +16,8 @@ function render() {
   boardEl.replaceChildren(); const stagedMap = new Map(staged.map((tile) => [key(tile.row, tile.col), tile]));
   for (let row=0; row<SIZE; row++) for (let col=0; col<SIZE; col++) {
     const square=document.createElement("button"), tile=state.board[row][col] || stagedMap.get(key(row,col));
-    square.className=`square ${premium.get(key(row,col)) || ""} ${tile ? "occupied" : ""} ${row===CENTER && col===CENTER ? "center" : ""}`;
-    square.setAttribute("role","gridcell"); square.innerHTML=tile ? `<b>${tile.letter}</b><small>${tile.blank ? 0 : tileValue(tile.letter)}</small>` : `<em>${premium.get(key(row,col)) || (row===CENTER && col===CENTER ? "✦" : "")}</em>`;
+    const premium=premiumAt(row,col); square.className=`square ${premium || ""} ${tile ? "occupied" : ""} ${row===CENTER && col===CENTER ? "center" : ""}`;
+    square.setAttribute("role","gridcell"); square.innerHTML=tile ? `<b>${tile.letter}</b><small>${tile.blank ? 0 : tileValue(tile.letter)}</small>` : `<em>${premium || (row===CENTER && col===CENTER ? "✦" : "")}</em>`;
     square.onclick=()=>place(row,col); square.ondragover=(event)=>event.preventDefault(); square.ondrop=(event)=>{ event.preventDefault(); place(row,col,Number(event.dataTransfer.getData("text/plain"))); }; boardEl.append(square);
   }
   rackEl.replaceChildren(...state.humanRack.map((letter,index)=>{
